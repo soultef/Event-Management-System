@@ -1,6 +1,11 @@
 package com.soultech.event_management.model;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Max;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+
 import java.time.LocalDateTime;
 
 
@@ -11,22 +16,41 @@ public class Event {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "event_seq")
     private Long id;
 
+    @Column(nullable = false)
+    @NotBlank(message = "Event name must not be blank")
     private String title;
 
+    @Column(nullable = false)
+    @NotBlank(message = "Event description must not be blank")
     private String description;
 
+    @Column(nullable = false)
+    @NotBlank(message = "Event location must not be blank")
     private String location;
 
+
+    @Column(nullable = false)
+    @NotBlank(message = "Event start time must not be blank")
     private LocalDateTime startTime;
 
+    @Column(nullable = false)
+    @NotBlank(message = "Event end time must not be blank")
     private LocalDateTime endTime;
 
+    @Column(nullable = false)
+    @NotNull(message = "Number of Tickets must not be null")
+    @Min(value = 100, message = "Number of ticket must be at least 100")
     private int totalTickets;
 
+    @Column(nullable = false)
     private int availableTickets;
 
+    @Column(nullable = false)
+    @NotNull(message = "Price must not be null")
+    @Min(value = 1, message = "Price must not be zero or less")
     private double price;
 
+    @Column(nullable = false)
     private String imageUrl;
 
 
