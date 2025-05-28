@@ -2,14 +2,14 @@ package com.soultech.event_management.model;
 
 import jakarta.persistence.*;
 import java.time.LocalDateTime;
-import java.util.UUID;
+
 
 @Entity
 public class Event {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "event_seq")
-    private UUID id;
+    private Long id;
 
     private String title;
 
