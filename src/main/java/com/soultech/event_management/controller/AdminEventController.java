@@ -1,0 +1,57 @@
+package com.soultech.event_management.controller;
+
+import com.soultech.event_management.dto.CreatedResponseEventDto;
+import com.soultech.event_management.model.Event;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.Map;
+
+@RestController
+@RequestMapping("/api/v1/admin")
+public class AdminEventController {
+
+
+    @GetMapping
+    public ResponseEntity<Map<String, CreatedResponseEventDto>> getAllEvents()
+    {
+        return null;
+    }
+
+
+    @GetMapping("/event/{id}")
+    public ResponseEntity<CreatedResponseEventDto>getAnEvent(@PathVariable int id)
+    {
+        return null;
+    }
+
+   @PostMapping("/event")
+    public ResponseEntity<CreatedResponseEventDto> createEvent(@RequestBody Event event)
+    {
+        return null;
+    }
+
+    @PostMapping("/event/{id}")
+    public ResponseEntity<DeleteDto> deleteEvent(@PathVariable long id)
+    {
+        return null;
+    }
+
+    @PutMapping("/event/{id}")
+    public ResponseEntity<UpdateDto> updateEvent( @PathVariable int id, @RequestBody Event event)
+    {
+        return null;
+    }
+
+    @PatchMapping("/event")
+    public ResponseEntity<PathchDto> patchEvent(Event event)
+    {
+        return null;
+    }
+
+    @GetMapping("/event/search/{id}")
+    public ResponseEntity<Map<String,CreatedResponseEventDto>> searchAnEvent(@PathVariable int id){
+        return null;
+    }
+
+}
