@@ -32,19 +32,19 @@ public class AdminEventController {
     }
 
     @PostMapping("/event/{id}")
-    public ResponseEntity<DeleteDto> deleteEvent(@PathVariable long id)
+    public ResponseEntity<String> deleteEvent(@PathVariable long id)
     {
         return null;
     }
 
     @PutMapping("/event/{id}")
-    public ResponseEntity<UpdateDto> updateEvent( @PathVariable int id, @RequestBody Event event)
+    public ResponseEntity<String> updateEvent( @PathVariable int id, @RequestBody Event event)
     {
         return null;
     }
 
     @PatchMapping("/event")
-    public ResponseEntity<PathchDto> patchEvent(Event event)
+    public ResponseEntity<String> patchEvent(Event event)
     {
         return null;
     }
