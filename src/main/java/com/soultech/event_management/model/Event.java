@@ -1,5 +1,6 @@
 package com.soultech.event_management.model;
 
+import com.soultech.event_management.enumeration.EventStatus;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
@@ -53,8 +54,9 @@ public class Event {
     @Column(nullable = false)
     private String imageUrl;
 
+    @Enumerated(EnumType.STRING)
     @Column(nullable = false)
-    private String eventStatus = "DRAFT";
+    private String eventStatus = EventStatus.DRAFT.toString();
 
 
     public Event() {}
