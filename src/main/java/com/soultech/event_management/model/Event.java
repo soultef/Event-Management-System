@@ -53,6 +53,8 @@ public class Event {
     @Column(nullable = false)
     private String imageUrl;
 
+    @Column(nullable = false)
+    private String eventStatus = "DRAFT";
 
 
     public Event() {}
@@ -68,6 +70,7 @@ public class Event {
         this.availableTickets = totalTickets;
         this.price = price;
         this.imageUrl = imageUrl;
+
     }
 
     public String getTitle() {
@@ -140,5 +143,13 @@ public class Event {
 
     public void setImageUrl(String imageUrl) {
         this.imageUrl = imageUrl;
+    }
+
+    public String getEventStatus() {
+        return eventStatus;
+    }
+
+    public void setEventStatus(String eventStatus) {
+        this.eventStatus = eventStatus;
     }
 }
