@@ -13,7 +13,7 @@ public class AdminEventController {
 
 
     @GetMapping
-    public ResponseEntity<Map<String, CreatedResponseEventDto>> getAllEvents()
+    public ResponseEntity<list <CreatedResponseEventDto>> getAllEvents()
     {
         return null;
     }
@@ -50,7 +50,7 @@ public class AdminEventController {
     }
 
     @GetMapping("/event/search/{id}")
-    public ResponseEntity<Map<String,CreatedResponseEventDto>> searchAnEvent(@PathVariable int id){
+    public ResponseEntity<list<CreatedResponseEventDto>> searchAnEvent(@PathVariable int id){
         return null;
     }
 
