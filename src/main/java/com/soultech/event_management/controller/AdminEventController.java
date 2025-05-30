@@ -12,11 +12,13 @@ import java.util.List;
 public class AdminEventController {
 
 
-    @GetMapping
+    @GetMapping("/events")
     public ResponseEntity<List <CreatedResponseEventDto>> getAllEvents()
     {
         return null;
+
     }
+
 
 
     @GetMapping("/event/{id}")
