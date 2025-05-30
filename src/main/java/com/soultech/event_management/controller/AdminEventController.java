@@ -5,6 +5,7 @@ import com.soultech.event_management.model.Event;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Map;
 
 @RestController
@@ -13,7 +14,7 @@ public class AdminEventController {
 
 
     @GetMapping
-    public ResponseEntity<list <CreatedResponseEventDto>> getAllEvents()
+    public ResponseEntity<List <CreatedResponseEventDto>> getAllEvents()
     {
         return null;
     }
@@ -50,7 +51,7 @@ public class AdminEventController {
     }
 
     @GetMapping("/event/search/{id}")
-    public ResponseEntity<list<CreatedResponseEventDto>> searchAnEvent(@PathVariable int id){
+    public ResponseEntity<List<CreatedResponseEventDto>> searchAnEvent(@PathVariable int id){
         return null;
     }
 
