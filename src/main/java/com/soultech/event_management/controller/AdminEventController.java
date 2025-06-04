@@ -20,6 +20,12 @@ public class AdminEventController {
         this.eventService = eventService;
     }
 
+    /**
+     * Retrieves a paginated list of all events.
+     *  This endpoint fetches all events in a paginated format, using default
+     *  page size and sorting (as configured in the service or repository).
+     * @return ResponseEntity containing a EventDtoResponse objects with HTTP 200 OK status on success.
+     */
     @GetMapping("/events")
     public ResponseEntity<Page<EventDtoResponse>> getAllEvents()
     {
