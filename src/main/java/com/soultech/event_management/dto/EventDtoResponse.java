@@ -1,13 +1,14 @@
 package com.soultech.event_management.dto;
 
+import java.time.LocalDateTime;
+
 public class CreatedResponseEventDto {
     private String eventId;
     private String title;
     private String description;
     private String location;
-    private String imageUrl;
-    private String startTime;
-    private String endTime;
+    private LocalDateTime startTime;
+    private LocalDateTime endTime;
     private long totalTickets;
     private double price;
 
@@ -43,27 +44,19 @@ public class CreatedResponseEventDto {
         this.location = location;
     }
 
-    public String getImageUrl() {
-        return imageUrl;
-    }
-
-    public void setImageUrl(String imageUrl) {
-        this.imageUrl = imageUrl;
-    }
-
-    public String getStartTime() {
+    public LocalDateTime getStartTime() {
         return startTime;
     }
 
-    public void setStartTime(String startTime) {
+    public void setStartTime(LocalDateTime startTime) {
         this.startTime = startTime;
     }
 
-    public String getEndTime() {
+    public LocalDateTime getEndTime() {
         return endTime;
     }
 
-    public void setEndTime(String endTime) {
+    public void setEndTime(LocalDateTime endTime) {
         this.endTime = endTime;
     }
 
