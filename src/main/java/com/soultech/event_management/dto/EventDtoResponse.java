@@ -1,8 +1,12 @@
 package com.soultech.event_management.dto;
 
+import com.soultech.event_management.enumeration.EventStatus;
+import com.soultech.event_management.model.Event;
+
 import java.time.LocalDateTime;
 
-public class CreatedResponseEventDto {
+public class EventDtoResponse {
+    private Long id;
     private String eventId;
     private String title;
     private String description;
@@ -11,6 +15,36 @@ public class CreatedResponseEventDto {
     private LocalDateTime endTime;
     private long totalTickets;
     private double price;
+    private int availableTickets;
+    private String imageUrl;
+    private Enum<EventStatus> eventStatus;
+
+    public EventDtoResponse(Long id, Enum<EventStatus> eventStatus, String imageUrl,
+                            int availableTickets, double price, long totalTickets,
+                            LocalDateTime endTime, LocalDateTime startTime,
+                            String location, String description,
+                            String title, String eventId) {
+        this.id = id;
+        this.eventStatus = eventStatus;
+        this.imageUrl = imageUrl;
+        this.availableTickets = availableTickets;
+        this.price = price;
+        this.totalTickets = totalTickets;
+        this.endTime = endTime;
+        this.startTime = startTime;
+        this.location = location;
+        this.description = description;
+        this.title = title;
+        this.eventId = eventId;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public String getEventId() {
         return eventId;
@@ -74,5 +108,29 @@ public class CreatedResponseEventDto {
 
     public void setPrice(double price) {
         this.price = price;
+    }
+
+    public int getAvailableTickets() {
+        return availableTickets;
+    }
+
+    public void setAvailableTickets(int availableTickets) {
+        this.availableTickets = availableTickets;
+    }
+
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
+    }
+
+    public Enum<EventStatus> getEventStatus() {
+        return eventStatus;
+    }
+
+    public void setEventStatus(Enum<EventStatus> eventStatus) {
+        this.eventStatus = eventStatus;
     }
 }

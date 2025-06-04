@@ -1,7 +1,9 @@
 package com.soultech.event_management.controller;
 
-import com.soultech.event_management.dto.CreatedResponseEventDto;
+import com.soultech.event_management.dto.EventDtoResponse;
 import com.soultech.event_management.model.Event;
+import com.soultech.event_management.service.EventService;
+import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -12,23 +14,30 @@ import java.util.List;
 public class AdminEventController {
 
 
+    private EventService eventService;
+
+    public AdminEventController(EventService eventService) {
+        this.eventService = eventService;
+    }
+
     @GetMapping("/events")
-    public ResponseEntity<List <CreatedResponseEventDto>> getAllEvents()
+    public ResponseEntity<Page<EventDtoResponse>> getAllEvents()
     {
-        return null;
+       Page<EventDtoResponse> pages =  eventService.getAllEvents();
+       return ResponseEntity.ok(pages);
 
     }
 
 
 
     @GetMapping("/event/{id}")
-    public ResponseEntity<CreatedResponseEventDto>getAnEvent(@PathVariable int id)
+    public ResponseEntity<EventDtoResponse>getAnEvent(@PathVariable int id)
     {
         return null;
     }
 
    @PostMapping("/event")
-    public ResponseEntity<CreatedResponseEventDto> createEvent(@RequestBody Event event)
+    public ResponseEntity<EventDtoResponse> createEvent(@RequestBody Event event)
     {
         return null;
     }
@@ -52,7 +61,7 @@ public class AdminEventController {
     }
 
     @GetMapping("/event/search/{id}")
-    public ResponseEntity<List<CreatedResponseEventDto>> searchAnEvent(@PathVariable int id){
+    public ResponseEntity<List<EventDtoResponse>> searchAnEvent(@PathVariable int id){
         return null;
     }
 

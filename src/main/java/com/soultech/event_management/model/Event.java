@@ -2,7 +2,6 @@ package com.soultech.event_management.model;
 
 import com.soultech.event_management.enumeration.EventStatus;
 import jakarta.persistence.*;
-import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -16,6 +15,9 @@ public class Event {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "event_seq")
     private Long id;
+
+    @NotBlank()
+    private String eventId;
 
     @Column(nullable = false)
     @NotBlank(message = "Event name must not be blank")
@@ -56,7 +58,7 @@ public class Event {
 
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
-    private String eventStatus = EventStatus.DRAFT.toString();
+    private EventStatus eventStatus = EventStatus.DRAFT;
 
 
     public Event() {}
@@ -77,6 +79,14 @@ public class Event {
 
     public String getTitle() {
         return title;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public void setTitle(String title) {
@@ -147,11 +157,18 @@ public class Event {
         this.imageUrl = imageUrl;
     }
 
-    public String getEventStatus() {
+    public EventStatus getEventStatus() {
         return eventStatus;
     }
 
-    public void setEventStatus(String eventStatus) {
+    public void setEventStatus(EventStatus eventStatus) {
         this.eventStatus = eventStatus;
+    }
+    public void setEventId(String eventId) {
+        this.eventId = eventId;
+    }
+
+    public String getEventId() {
+        return eventId;
     }
 }
