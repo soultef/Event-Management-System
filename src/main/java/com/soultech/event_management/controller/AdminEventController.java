@@ -37,9 +37,9 @@ public class AdminEventController {
 
 
     @GetMapping("/event/{id}")
-    public ResponseEntity<EventDtoResponse>getAnEvent(@PathVariable int id)
+    public ResponseEntity<EventDtoResponse>getAnEventById(@PathVariable Long id)
     {
-        return null;
+        return ResponseEntity.ok(eventService.getAnEvent(id));
     }
 
    @PostMapping("/event")

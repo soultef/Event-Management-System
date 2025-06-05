@@ -1,6 +1,7 @@
 package com.soultech.event_management.service;
 
 import com.soultech.event_management.dto.EventDtoResponse;
+import com.soultech.event_management.exception.CustomException;
 import com.soultech.event_management.mapper.EventMapper;
 import com.soultech.event_management.model.Event;
 import com.soultech.event_management.repository.EventRepository;
@@ -25,6 +26,11 @@ public class EventService {
         Page<Event> events = eventRepository.findAll(PageRequest.of(0, 10));
          return events.map(eventMapper::allEntityToDto);
 
+    }
+
+    public EventDtoResponse getAnEvent(long id) throws CustomException {
+        Event event = eventRepository.findById(id).orElseThrow(() -> new CustomException("No event under id " + id));
+        return eventMapper.allEntityToDto(event);
     }
 
 
