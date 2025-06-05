@@ -34,7 +34,15 @@ public class AdminEventController {
 
     }
 
-
+    /**
+     * Retrieves an event by its unique ID.
+     * <p>This endpoint handles HTTP GET requests to api/v1/event/{id} and returns
+     * the corresponding {@link EventDtoResponse} object.</p>
+     *
+     * @param id the unique identifier of the event to retrieve
+     * @return a {@link ResponseEntity} containing the event data and HTTP 200 OK if found
+     * throws exception with HTTP 404 NOT FOUND if the event does not exist
+     */
 
     @GetMapping("/event/{id}")
     public ResponseEntity<EventDtoResponse>getAnEventById(@PathVariable Long id)
