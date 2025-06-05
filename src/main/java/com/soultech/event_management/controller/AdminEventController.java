@@ -3,6 +3,7 @@ package com.soultech.event_management.controller;
 import com.soultech.event_management.dto.EventDtoResponse;
 import com.soultech.event_management.model.Event;
 import com.soultech.event_management.service.EventService;
+import jakarta.validation.Valid;
 import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -51,7 +52,7 @@ public class AdminEventController {
     }
 
    @PostMapping("/event")
-    public ResponseEntity<EventDtoResponse> createEvent(@RequestBody Event event)
+    public ResponseEntity<EventDtoResponse> createEvent(@RequestBody @Valid Event event)
     {
         return null;
     }
