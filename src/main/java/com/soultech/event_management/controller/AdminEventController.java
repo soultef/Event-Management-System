@@ -52,6 +52,22 @@ public class AdminEventController {
         return ResponseEntity.ok(eventService.getAnEvent(id));
     }
 
+
+    /**
+     * Handles HTTP POST requests to create a new event.
+     * <p>
+     * This endpoint accepts a JSON payload representing event details,
+     * validates the input using Jakarta Bean Validation (JSR 380),
+     * and delegates the event creation to the {@code eventService}.
+     * </p>
+     *
+     * @param requestDto the {@link EventDtoRequest} containing the event details;
+     *                   must be valid according to the validation annotations.
+     * @return a {@link ResponseEntity} containing the created event details
+     *         as {@link EventDtoRequest} and HTTP status 200 (OK).
+     *
+     */
+
    @PostMapping("/event")
     public ResponseEntity<EventDtoRequest> createEvent(@Valid @RequestBody EventDtoRequest requestDto)
     {
