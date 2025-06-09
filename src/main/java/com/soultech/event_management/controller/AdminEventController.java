@@ -1,7 +1,11 @@
 package com.soultech.event_management.controller;
 
-import com.soultech.event_management.dto.CreatedResponseEventDto;
+import com.soultech.event_management.dto.EventDtoRequest;
+import com.soultech.event_management.dto.EventDtoResponse;
 import com.soultech.event_management.model.Event;
+import com.soultech.event_management.service.EventService;
+import jakarta.validation.Valid;
+import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -12,26 +16,49 @@ import java.util.List;
 public class AdminEventController {
 
 
+    private final EventService eventService;
+
+    public AdminEventController(EventService eventService) {
+        this.eventService = eventService;
+    }
+
+    /**
+     * Retrieves a paginated list of all events.
+     *  This endpoint fetches all events in a paginated format, using default
+     *  page size and sorting (as configured in the service or repository).
+     * @return ResponseEntity containing a EventDtoResponse objects with HTTP 200 OK status on success.
+     */
     @GetMapping("/events")
-    public ResponseEntity<List <CreatedResponseEventDto>> getAllEvents()
+    public ResponseEntity<Page<EventDtoResponse>> getAllEvents()
     {
-        return null;
+       Page<EventDtoResponse> pages =  eventService.getAllEvents();
+       return ResponseEntity.ok(pages);
 
     }
 
-
+    /**
+     * Retrieves an event by its unique ID.
+     * <p>This endpoint handles HTTP GET requests to api/v1/event/{id} and returns
+     * the corresponding {@link EventDtoResponse} object.</p>
+     *
+     * @param id the unique identifier of the event to retrieve
+     * @return a {@link ResponseEntity} containing the event data and HTTP 200 OK if found
+     * throws exception with HTTP 404 NOT FOUND if the event does not exist
+     */
 
     @GetMapping("/event/{id}")
-    public ResponseEntity<CreatedResponseEventDto>getAnEvent(@PathVariable int id)
+    public ResponseEntity<EventDtoResponse>getAnEventById(@PathVariable Long id)
     {
-        return null;
+        return ResponseEntity.ok(eventService.getAnEvent(id));
     }
 
    @PostMapping("/event")
-    public ResponseEntity<CreatedResponseEventDto> createEvent(@RequestBody Event event)
+    public ResponseEntity<EventDtoRequest> createEvent(@Valid @RequestBody EventDtoRequest requestDto)
     {
-        return null;
+        return ResponseEntity.ok(eventService.createAnEvent(requestDto));
     }
+
+
 
     @PostMapping("/event/{id}")
     public ResponseEntity<String> deleteEvent(@PathVariable long id)
@@ -52,7 +79,7 @@ public class AdminEventController {
     }
 
     @GetMapping("/event/search/{id}")
-    public ResponseEntity<List<CreatedResponseEventDto>> searchAnEvent(@PathVariable int id){
+    public ResponseEntity<List<EventDtoResponse>> searchAnEvent(@PathVariable int id){
         return null;
     }
 

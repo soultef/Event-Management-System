@@ -1,7 +1,8 @@
 package com.soultech.event_management.model;
 
+import com.soultech.event_management.enumeration.EventStatus;
 import jakarta.persistence.*;
-import jakarta.validation.constraints.Max;
+import jakarta.validation.constraints.Future;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -13,49 +14,58 @@ import java.time.LocalDateTime;
 public class Event {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "event_seq")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false)
+    @NotBlank
+    private String eventId;
+
     @NotBlank(message = "Event name must not be blank")
+    @Column(nullable = false)
     private String title;
 
-    @Column(nullable = false)
     @NotBlank(message = "Event description must not be blank")
+    @Column(nullable = false)
     private String description;
 
-    @Column(nullable = false)
     @NotBlank(message = "Event location must not be blank")
+    @Column(nullable = false)
     private String location;
 
-
+    @NotNull(message = "Event start time must not be null")
+    @Future(message = "Start time must be in the future")
     @Column(nullable = false)
-    @NotBlank(message = "Event start time must not be blank")
     private LocalDateTime startTime;
 
+    @NotNull(message = "Event end time must not be null")
+    @Future(message = "End time must be in the future")
     @Column(nullable = false)
-    @NotBlank(message = "Event end time must not be blank")
     private LocalDateTime endTime;
 
-    @Column(nullable = false)
     @NotNull(message = "Number of Tickets must not be null")
     @Min(value = 100, message = "Number of ticket must be at least 100")
+    @Column(nullable = false)
     private int totalTickets;
 
     @Column(nullable = false)
     private int availableTickets;
 
-    @Column(nullable = false)
     @NotNull(message = "Price must not be null")
-    @Min(value = 1, message = "Price must not be zero or less")
+    @Min(value = 1, message = "Price must be at least 1")
+    @Column(nullable = false)
     private double price;
 
+    @NotBlank(message = "Image URL must not be blank")
     @Column(nullable = false)
     private String imageUrl;
 
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
+    private EventStatus eventStatus;
 
 
-    public Event() {}
+    public Event() {
+    }
 
     public Event(String title, String description, String location, LocalDateTime startTime,
                  LocalDateTime endTime, int totalTickets, double price, String imageUrl) {
@@ -68,6 +78,31 @@ public class Event {
         this.availableTickets = totalTickets;
         this.price = price;
         this.imageUrl = imageUrl;
+
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public  String getEventId() {
+        return eventId;
+    }
+
+    public void setEventId(String eventId) {
+        this.eventId = eventId;
+    }
+
+    public String getLocation() {
+        return location;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
     }
 
     public String getTitle() {
@@ -86,23 +121,15 @@ public class Event {
         this.description = description;
     }
 
-    public String getLocation() {
-        return location;
-    }
-
-    public void setLocation(String location) {
-        this.location = location;
-    }
-
-    public LocalDateTime getStartTime() {
+    public  LocalDateTime getStartTime() {
         return startTime;
     }
 
-    public void setStartTime(LocalDateTime startTime) {
+    public void setStartTime( LocalDateTime startTime) {
         this.startTime = startTime;
     }
 
-    public LocalDateTime getEndTime() {
+    public  LocalDateTime getEndTime() {
         return endTime;
     }
 
@@ -126,11 +153,12 @@ public class Event {
         this.availableTickets = availableTickets;
     }
 
+
     public double getPrice() {
         return price;
     }
 
-    public void setPrice(double price) {
+    public void setPrice( double price) {
         this.price = price;
     }
 
@@ -140,5 +168,13 @@ public class Event {
 
     public void setImageUrl(String imageUrl) {
         this.imageUrl = imageUrl;
+    }
+
+    public EventStatus getEventStatus() {
+        return eventStatus;
+    }
+
+    public void setEventStatus(EventStatus eventStatus) {
+        this.eventStatus = eventStatus;
     }
 }
