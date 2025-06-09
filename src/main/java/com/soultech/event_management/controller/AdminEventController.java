@@ -74,28 +74,50 @@ public class AdminEventController {
     }
 
 
-
-    @PostMapping("/event/{id}")
-    public ResponseEntity<String> deleteEvent(@PathVariable long id)
+    /**
+     * Handles HTTP delete request to delete an event by id
+     * <p>This endpoint accept id of an event and provide event deletion by id to the @eventservice.deleteEvent</p>
+     * @param id the unique identifiers for an event.
+     * @return a EventDtoRequest object on successful deletion with status ok(200).
+     */
+    @DeleteMapping("/event/{id}")
+    public ResponseEntity<EventDtoResponse> deleteEvent(@PathVariable long id)
     {
-        return null;
+        return ResponseEntity.ok(eventService.deleteEvent(id));
     }
 
-    @PutMapping("/event/{id}")
-    public ResponseEntity<String> updateEvent( @PathVariable int id, @RequestBody Event event)
-    {
-        return null;
+
+
+    /**
+     * Updates an existing event with the specified ID.
+     *
+     * @param id the ID of the event to update
+     * @return ResponseEntity containing the updated EventDtoResponse
+     *
+     * @throws EventNotFoundException if no event exists with the given ID
+     * @throws InvalidEventDataException if the update operation fails due to invalid data
+     *
+     * @apiNote This endpoint typically expects an updated event object in the request body (not shown in the current method).
+     * Consider accepting a @RequestBody EventDtoRequest parameter for full update functionality.
+     */
+    @PutMapping("/event/update/{id}")
+    public ResponseEntity<EventDtoResponse> updateEvent(@PathVariable int id,
+            @Valid @RequestBody EventDtoRequest updatedEvent
+    ) {
+        return ResponseEntity.ok(eventService.updateEvent(id, updatedEvent));
     }
 
-    @PatchMapping("/event")
-    public ResponseEntity<String> patchEvent(Event event)
-    {
-        return null;
+    /**
+     * Searches for events by a free-text query string.
+     * The query is matched against event title and description fields (case-insensitive, partial match).
+     *
+     * @param search the search term used to filter events
+     * @return ResponseEntity containing a list of matching EventDtoResponse objects
+     */
+    @GetMapping("/event/search")
+    public ResponseEntity<List<EventDtoResponse>> searchAnEvent(@RequestParam("q") String search) {
+        return ResponseEntity.ok(eventService.searchEvent(search));
     }
 
-    @GetMapping("/event/search/{id}")
-    public ResponseEntity<List<EventDtoResponse>> searchAnEvent(@PathVariable int id){
-        return null;
-    }
 
 }
