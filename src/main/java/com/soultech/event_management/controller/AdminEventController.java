@@ -1,8 +1,10 @@
 package com.soultech.event_management.controller;
 
+import com.soultech.event_management.dto.EventDtoRequest;
 import com.soultech.event_management.dto.EventDtoResponse;
 import com.soultech.event_management.model.Event;
 import com.soultech.event_management.service.EventService;
+import jakarta.validation.Valid;
 import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -14,7 +16,7 @@ import java.util.List;
 public class AdminEventController {
 
 
-    private EventService eventService;
+    private final EventService eventService;
 
     public AdminEventController(EventService eventService) {
         this.eventService = eventService;
@@ -51,10 +53,12 @@ public class AdminEventController {
     }
 
    @PostMapping("/event")
-    public ResponseEntity<EventDtoResponse> createEvent(@RequestBody Event event)
+    public ResponseEntity<EventDtoRequest> createEvent(@Valid @RequestBody EventDtoRequest requestDto)
     {
-        return null;
+        return ResponseEntity.ok(eventService.createAnEvent(requestDto));
     }
+
+
 
     @PostMapping("/event/{id}")
     public ResponseEntity<String> deleteEvent(@PathVariable long id)
