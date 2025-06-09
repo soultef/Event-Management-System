@@ -25,74 +25,77 @@ public class EventDtoRequest {
     private LocalDateTime endDateTime;
 
     @NotNull
-    private long totalTickets;
+    private int totalTickets;
 
     @NotNull
     private double price;
+
     @NotBlank(message = "must provide image url")
     private String imageUrl;
 
-    public String getTitle() {
+    public @NotBlank(message = "Event title should not be blank") String getTitle() {
         return title;
     }
 
-    public void setTitle(String title) {
+    public void setTitle(@NotBlank(message = "Event title should not be blank") String title) {
         this.title = title;
     }
 
-    public String getDescription() {
+    public @NotBlank(message = "Must add description for your event!") String getDescription() {
         return description;
     }
 
-    public void setDescription(String description) {
+    public void setDescription(@NotBlank(message = "Must add description for your event!") String description) {
         this.description = description;
     }
 
-    public String getLocation() {
+    public @NotBlank(message = "Must chose event location!") String getLocation() {
         return location;
     }
 
-    public void setLocation(String location) {
+    public void setLocation(@NotBlank(message = "Must chose event location!") String location) {
         this.location = location;
     }
 
-    public LocalDateTime getStartTime() {
+    public @NotNull @Future(message = "Start date and time must be in the future") LocalDateTime getStartDateTime() {
         return startDateTime;
     }
 
-    public void setStartTime(LocalDateTime startTime) {
-        this.startDateTime = startTime;
+    public void setStartDateTime(@NotNull @Future(message = "Start date and time must be in the future") LocalDateTime startDateTime) {
+        this.startDateTime = startDateTime;
     }
 
-    public LocalDateTime getEndDateTime() {
+    public @NotNull @Future(message = "End date and time must be in the future") LocalDateTime getEndDateTime() {
         return endDateTime;
     }
 
-    public void setEndTime(LocalDateTime endTime) {
-        this.endDateTime = endTime;
+    public void setEndDateTime(@NotNull @Future(message = "End date and time must be in the future") LocalDateTime endDateTime) {
+        this.endDateTime = endDateTime;
     }
 
-    public long getTotalTickets() {
+    @NotNull
+    public int getTotalTickets() {
         return totalTickets;
     }
 
-    public void setTotalTickets(long totalTickets) {
+    public void setTotalTickets(@NotNull int totalTickets) {
         this.totalTickets = totalTickets;
     }
 
+    @NotNull
     public double getPrice() {
         return price;
     }
 
-    public void setPrice(double price) {
+    public void setPrice(@NotNull double price) {
         this.price = price;
     }
 
-    public String getImageUrl() {
+    public @NotBlank(message = "must provide image url") String getImageUrl() {
         return imageUrl;
     }
 
-    public void setImageUrl(String imageUrl) {
+    public void setImageUrl(@NotBlank(message = "must provide image url") String imageUrl) {
         this.imageUrl = imageUrl;
     }
 }
