@@ -65,7 +65,6 @@ public class AdminEventController {
      *                   must be valid according to the validation annotations.
      * @return a {@link ResponseEntity} containing the created event details
      *         as {@link EventDtoRequest} and HTTP status 200 (OK).
-     *
      */
 
    @PostMapping("/event")
