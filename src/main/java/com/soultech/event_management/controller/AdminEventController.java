@@ -2,7 +2,6 @@ package com.soultech.event_management.controller;
 
 import com.soultech.event_management.dto.EventDtoRequest;
 import com.soultech.event_management.dto.EventDtoResponse;
-import com.soultech.event_management.model.Event;
 import com.soultech.event_management.service.EventService;
 import jakarta.validation.Valid;
 import org.springframework.data.domain.Page;
@@ -74,6 +73,7 @@ public class AdminEventController {
     }
 
 
+
     /**
      * Handles HTTP delete request to delete an event by id
      * <p>This endpoint accept id of an event and provide event deletion by id to the @eventservice.deleteEvent</p>
@@ -81,9 +81,10 @@ public class AdminEventController {
      * @return a EventDtoRequest object on successful deletion with status ok(200).
      */
     @DeleteMapping("/event/{id}")
-    public ResponseEntity<EventDtoResponse> deleteEvent(@PathVariable long id)
+    public ResponseEntity<String> deleteEvent(@PathVariable long id)
     {
-        return ResponseEntity.ok(eventService.deleteEvent(id));
+        String deletedSucess = String.format("An event with id %d was deleted successfully", id);
+        return ResponseEntity.ok(deletedSucess);
     }
 
 
@@ -93,18 +94,16 @@ public class AdminEventController {
      *
      * @param id the ID of the event to update
      * @return ResponseEntity containing the updated EventDtoResponse
-     *
-     * @throws EventNotFoundException if no event exists with the given ID
+     * @throws EventNotFoundException    if no event exists with the given ID
      * @throws InvalidEventDataException if the update operation fails due to invalid data
-     *
      * @apiNote This endpoint typically expects an updated event object in the request body (not shown in the current method).
      * Consider accepting a @RequestBody EventDtoRequest parameter for full update functionality.
      */
     @PutMapping("/event/update/{id}")
-    public ResponseEntity<EventDtoResponse> updateEvent(@PathVariable int id,
-            @Valid @RequestBody EventDtoRequest updatedEvent
-    ) {
-        return ResponseEntity.ok(eventService.updateEvent(id, updatedEvent));
+    public EventDtoResponse updateEvent(@PathVariable Long id,
+                                        @Valid @RequestBody EventDtoRequest updatedEvent) {
+
+        return eventService.updateEvent(id,updatedEvent);
     }
 
     /**
