@@ -33,7 +33,6 @@ public class EventMapper {
     @Valid
     public Event dtoToEventEntity(Event event, EventDtoRequest dto) {
         event.setTitle(dto.getTitle());
-
         event.setDescription(dto.getDescription());
         event.setStartTime(dto.getStartDateTime());
         event.setEndTime(dto.getEndDateTime());
