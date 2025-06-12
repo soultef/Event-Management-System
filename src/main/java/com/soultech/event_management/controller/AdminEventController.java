@@ -114,7 +114,7 @@ public class AdminEventController {
      * @return ResponseEntity containing a list of matching EventDtoResponse objects
      */
     @GetMapping("/event/search")
-    public ResponseEntity<List<EventDtoResponse>> searchAnEvent(@RequestParam("q") String search) {
+    public ResponseEntity<List<EventDtoResponse>> searchAnEvent(@RequestParam("search") String search) {
         return ResponseEntity.ok(eventService.searchEvent(search));
     }
 
