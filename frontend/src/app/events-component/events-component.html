@@ -1,0 +1,30 @@
+<div class="form-container">
+  <h2>Create Event</h2>
+  <form (ngSubmit)="submitEvent()" #eventForm="ngForm">
+    <label>Title</label>
+    <input type="text" [(ngModel)]="event.title" name="title" required>
+
+    <label>Description</label>
+    <textarea [(ngModel)]="event.description" name="description" required></textarea>
+
+    <label>Category</label>
+    <input type="text" [(ngModel)]="event.category" name="category">
+
+    <label>Date</label>
+    <input type="date" [(ngModel)]="event.date" name="date" required>
+
+    <label>Time</label>
+    <input type="time" [(ngModel)]="event.time" name="time" required>
+
+    <label>Location</label>
+    <input type="text" [(ngModel)]="event.location" name="location">
+
+    <label>Capacity</label>
+    <input type="number" [(ngModel)]="event.capacity" name="capacity" min="1">
+
+    <label>Organizer ID</label>
+    <input type="number" [(ngModel)]="event.organizer_id" name="organizer_id" required>
+
+    <button type="submit">Save Event</button>
+  </form>
+</div>

@@ -1,0 +1,25 @@
+<div class="form-container">
+  <h2>Register Organizer</h2>
+  <form (ngSubmit)="submitOrganizer()" #orgForm="ngForm">
+    <label>Name</label>
+    <input type="text" [(ngModel)]="organizer.name" name="name" required>
+
+    <label>Email</label>
+    <input type="email" [(ngModel)]="organizer.email" name="email" required>
+
+    <label>Organization Name</label>
+    <input type="text" [(ngModel)]="organizer.organization_name" name="organization_name" required>
+
+    <label>Phone</label>
+    <input type="text" [(ngModel)]="organizer.phone" name="phone" required>
+
+    <label>Website</label>
+    <input type="url" [(ngModel)]="organizer.website" name="website">
+
+    <label>Address</label>
+    <textarea [(ngModel)]="organizer.address" name="address"></textarea>
+
+    <button type="submit">Register</button>
+  </form>
+</div>
+

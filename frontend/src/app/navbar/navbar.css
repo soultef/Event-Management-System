@@ -1,0 +1,71 @@
+/* Reset basic styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+/* Navbar wrapper */
+.navbar {
+  background-color: #1a237e; /* Deep navy */
+  padding: 0.75rem 2rem;
+  color: #fff;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Container for logo + links */
+.navbar-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: auto;
+}
+
+/* Logo styles */
+.navbar-logo a{
+  font-size: 1.4rem;
+  font-weight: bold;
+  color: #ffca28; /* Accent color (gold/yellow) */
+  letter-spacing: 1px;
+  text-decoration: none;
+}
+
+/* Links wrapper */
+.navbar-links {
+  list-style: none;
+  display: flex;
+  gap: 2rem; /* spacing between links */
+}
+
+/* Link styling */
+.navbar-links a {
+  text-decoration: none;
+  color: #fff;
+  font-size: 1rem;
+  transition: color 0.3s ease, border-bottom 0.3s ease;
+  padding-bottom: 2px;
+}
+
+.navbar-links a:hover {
+  color: #ffca28; /* Gold hover */
+  border-bottom: 2px solid #ffca28;
+}
+
+/* Responsive (mobile) */
+@media (max-width: 768px) {
+  .navbar-container {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .navbar-links {
+    flex-direction: column;
+    gap: 1rem;
+    margin-top: 1rem;
+  }
+}
