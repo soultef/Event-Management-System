@@ -36,7 +36,8 @@
     <module>user-authentication</module>
     <module>payment-service</module>
     <module>notification-service</module>
-    <!-- Add more as needed -->
+      <module>api-gateway</module>
+      <!-- Add more as needed -->
   </modules>
 
   <!-- 🔹 Plugin Management (optional, can add common plugins here) -->
