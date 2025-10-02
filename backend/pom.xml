@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
+                             https://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+  <modelVersion>4.0.0</modelVersion>
+
+  <!-- 🔹 Inherit from Spring Boot's starter parent -->
+  <parent>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-parent</artifactId>
+    <version>3.5.6</version> <!-- Use latest compatible version -->
+    <relativePath/> <!-- Important: avoid searching locally -->
+  </parent>
+
+  <!-- 🔹 Define your organization info -->
+  <groupId>com.soultech</groupId>
+  <artifactId>backend</artifactId>
+  <version>1.0-SNAPSHOT</version>
+  <packaging>pom</packaging>
+  <name>Backend Parent Project</name>
+  <description>Parent project for all backend microservices</description>
+
+  <!-- 🔹 Java version and encoding -->
+  <properties>
+    <java.version>17</java.version>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+  </properties>
+
+  <!-- 🔹 Modules (services go here) -->
+  <modules>
+    <module>event-service</module>
+    <module>organizer-service</module>
+    <module>user-authentication</module>
+    <module>payment-service</module>
+    <module>notification-service</module>
+    <!-- Add more as needed -->
+  </modules>
+
+  <!-- 🔹 Plugin Management (optional, can add common plugins here) -->
+  <build>
+    <pluginManagement>
+      <plugins>
+        <plugin>
+          <groupId>org.springframework.boot</groupId>
+          <artifactId>spring-boot-maven-plugin</artifactId>
+        </plugin>
+      </plugins>
+    </pluginManagement>
+  </build>
+
+</project>
